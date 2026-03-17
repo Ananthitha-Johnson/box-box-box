@@ -19,7 +19,7 @@ tire_offset = {
 
 degradation = {
     "SOFT": 0.08,
-    "MEDIUM": 0.05,
+    "MEDIUM": 0.065,
     "HARD": 0.03
 }
 
@@ -58,7 +58,7 @@ for key in strategies:
 
         for lap_on_tire in range(1, laps_in_segment + 1):
             extra_wear_laps = max(0, lap_on_tire - grace_laps[tire])
-            wear = extra_wear_laps * degradation[tire] * temp_factor
+            wear = (extra_wear_laps ** 1.2) * degradation[tire] * temp_factor
             lap_time = base_lap_time + tire_offset[tire] + wear
             total_time += lap_time
 
